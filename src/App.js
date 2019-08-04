@@ -1,20 +1,22 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-function App() {
+class App extends React.Component {
   constructor(props) {
-    super(props),
-      this.state = {
-      paras = 4,
-      html = true,
-      text = ''
-    }
+    super(props);
+    this.state = {
+      paras: 4,
+      html: true,
+      text: ''
+    };
   }
-  return (
-    <div className="App">
+  render() {
+    return (
+      <div className="App">
       Sample Text Generator!
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 export default App;
