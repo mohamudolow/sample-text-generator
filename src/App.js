@@ -19,7 +19,7 @@ class App extends Component {
     this.getSampleText();
   }
   getSampleText() {
-    axios.get('http://www.randomtext.me/api?'+this.state.type+'&'+this.state.format+'&-'+this.state.num_elements+'&'+this.state.min_words+'&-'+this.state.max_words, {crossdomain: true})
+    axios.get('http://www.randomtext.me/api/'+this.state.type+'/'+this.state.format+'-'+this.state.num_elements+'/'+this.state.min_words+'-'+this.state.max_words, {crossdomain: true})
       .then((res) => {
       this.setState({
         text: res.data.text_out}, function() {
