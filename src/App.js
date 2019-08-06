@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import Output from './Components/Output';
+import Select from './Components/Controls/Select';
+import Text from './Components/Controls/Text';
 import axios from 'axios';
 class App extends Component {
   constructor(props) {
@@ -13,6 +15,8 @@ class App extends Component {
       max_words: '100',
       text: ''
     };
+    this.showType = this.showType.bind(this);
+    this.changeElements = this.changeElements.bind(this);
   }
 
   componentWillMount() {
@@ -30,9 +34,30 @@ class App extends Component {
       console.log(err);
     });
   }
+  
+  showType(i) {
+    this.setState({type: i}, this.getSampleText);
+  }
+  
+  changeElements(num) {
+    this.setState({num_elements: num}, this.getSampleText);
+  }
   render() {
     return (
-      <div className="App">
+      <div className="App container">
+      <h1 className="text-center">Sample Text Generator</h1>
+      <hr />
+      <form className="form-inline">
+      <div className="form-group">
+      <label>Type:</label>
+      <Select value={this.state.type} onChange={this.showType}/>
+      </div>
+      <div className="form-group amount">
+      <label>Number of Elements:</label>
+      <Text value={this.state.num_elements} onChange={this.changeElements}/>
+      </div>
+      </form>
+      <br /><br />
       <Output value={this.state.text} />
       </div>
     );
